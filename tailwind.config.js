@@ -19,6 +19,10 @@ module.exports = {
       lg: ["3rem", "1.15em"],
       xl: ["4rem", "1.15em"],
     },
+    fontFamily: {
+      heading: ["var(--font-lora)"],
+      body: ["var(--font-inter)"],
+    },
     extend: {
       spacing: {
         "card-sm": "1rem",
