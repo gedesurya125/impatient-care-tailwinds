@@ -21,6 +21,11 @@ export default async function Home() {
         mx-auto`}
       ></div> */}
       <ResponsiveGrid>
+        <h1 className="font-heading">Impatient Care Apllication</h1>
+        <p className="col-start-1 col-end-12 font-heading">
+          Do ut et culpa excepteur deserunt qui aliqua velit proident officia
+          elit tempor non laborum.
+        </p>
         <div className="col-start-1 col-span-4 h-[3rem] bg-white" />
       </ResponsiveGrid>
     </main>
