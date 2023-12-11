@@ -15,7 +15,6 @@ export const ResponsiveGrid = ({ children, className = "", ...props }) => {
         tabletPortrait:w-container-tablet-portrait 
         tabletLandscape:w-container-tablet-landscape 
         desktop:w-container-desktop 
-        h-container-phone 
         mx-auto
     `}
     >

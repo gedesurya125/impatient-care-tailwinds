@@ -14,7 +14,7 @@ module.exports = {
       desktop: "1400px",
     },
     fontSize: {
-      sm: ["1rem", "1.5em"],
+      sm: ["1.4rem", "1.5em"],
       md: ["2rem", "1.35em"],
       lg: ["3rem", "1.15em"],
       xl: ["4rem", "1.15em"],
