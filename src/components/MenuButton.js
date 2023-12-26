@@ -2,10 +2,10 @@
 import React from "react";
 import { Overlay } from "./Overlay";
 import { BurgerIcon } from "./svgs/BurgerIcon";
-import clsx from "clsx";
 import { navigationData } from "data/navigationData";
 import Link from "next/link";
 import { ResponsiveGrid } from "./theme";
+import { AnimatePresence } from "framer-motion";
 
 export const MenuButton = () => {
   const [open, setOpen] = React.useState(false);
@@ -24,7 +24,9 @@ export const MenuButton = () => {
       >
         <BurgerIcon className="text-secondary" />
       </button>
-      {open && <NavigationOverlay handleClose={handleClose} />}
+      <AnimatePresence>
+        {open && <NavigationOverlay handleClose={handleClose} />}
+      </AnimatePresence>
     </>
   );
 };
@@ -34,10 +36,30 @@ const NavigationOverlay = ({ handleClose }) => {
     <Overlay
       id="nav-overlay"
       handleClose={handleClose}
-      className="pt-28 bg-primary pb-24"
+      className="bg-primary overflow-hidden"
+      initial={{
+        height: 0,
+      }}
+      animate={{
+        height: "auto",
+      }}
+      exit={{
+        height: 0,
+      }}
+      backdropProps={{
+        initial: {
+          backgroundColor: "rgba(0,0,0, 0)",
+        },
+        animate: {
+          backgroundColor: "rgba(0,0,0, 0.2)",
+        },
+        exit: {
+          backgroundColor: "rgba(0,0,0, 0)",
+        },
+      }}
     >
       <ResponsiveGrid>
-        <div className="col-start-1 col-end-13 flex flex-col">
+        <div className="col-start-1 col-end-13 flex flex-col pt-28 pb-24">
           {navigationData?.links.map((link, index) => {
             return (
               <Link

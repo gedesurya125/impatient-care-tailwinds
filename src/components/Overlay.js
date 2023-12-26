@@ -2,6 +2,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { cn } from "./theme/utils/cn";
 import { ResponsiveGrid } from "./theme";
+import { motion } from "framer-motion";
 
 export const Overlay = ({
   children,
@@ -14,8 +15,11 @@ export const Overlay = ({
   backdropProps,
   ...props
 }) => {
+  const MotionBackdrop = motion(BackdropComponent);
+  const MotionContentWrapper = motion(Component);
+
   return createPortal(
-    <BackdropComponent
+    <MotionBackdrop
       onClick={(e) => {
         handleClose && handleClose(e);
       }}
@@ -26,7 +30,7 @@ export const Overlay = ({
       )}
       {...backdropProps}
     >
-      <Component
+      <MotionContentWrapper
         className={cn(`overlay-content-wrapper  bg-white`, className)}
         onClick={(e) => {
           e.stopPropagation();
@@ -34,8 +38,8 @@ export const Overlay = ({
         {...props}
       >
         {children}
-      </Component>
-    </BackdropComponent>,
+      </MotionContentWrapper>
+    </MotionBackdrop>,
     document.body
   );
 };
