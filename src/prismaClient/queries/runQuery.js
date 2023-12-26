@@ -2,7 +2,7 @@ import { prisma } from "prismaClient/db";
 
 export async function runQuery(callback = async () => {}) {
   // ... you will write your Prisma Client queries here
-  return await callback();
+  return await callback(prisma);
 }
 
 runQuery()

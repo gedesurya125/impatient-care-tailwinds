@@ -1,8 +1,13 @@
 import React from "react";
 
-export const ResponsiveGrid = ({ children, className = "", ...props }) => {
+export const ResponsiveGrid = ({
+  children,
+  className = "",
+  as: Component = "div",
+  ...props
+}) => {
   return (
-    <div
+    <Component
       {...props}
       className={`${className} 
         grid
@@ -19,6 +24,6 @@ export const ResponsiveGrid = ({ children, className = "", ...props }) => {
     `}
     >
       {children}
-    </div>
+    </Component>
   );
 };
