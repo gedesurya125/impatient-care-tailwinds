@@ -15,7 +15,7 @@ export const ResponsiveGrid = ({
         tabletPortrait:grid-cols-24
         tabletLandscape:grid-cols-24
         desktop:grid-cols-24
-        gap-2
+        gap-x-2
         w-container-phone 
         tabletPortrait:w-container-tablet-portrait 
         tabletLandscape:w-container-tablet-landscape 

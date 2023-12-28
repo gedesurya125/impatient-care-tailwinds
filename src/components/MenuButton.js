@@ -6,6 +6,7 @@ import { navigationData } from "data/navigationData";
 import Link from "next/link";
 import { ResponsiveGrid } from "./theme";
 import { AnimatePresence } from "framer-motion";
+import { usePathChangeEffect } from "hooks/usePathChangeEffect";
 
 export const MenuButton = () => {
   const [open, setOpen] = React.useState(false);
@@ -15,6 +16,8 @@ export const MenuButton = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  usePathChangeEffect(handleClose);
 
   return (
     <>

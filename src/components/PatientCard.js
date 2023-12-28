@@ -106,8 +106,8 @@ const DetailsContainer = ({ data }) => {
 const TableData = ({ title, value }) => {
   return (
     <tr>
-      <th>{title}</th>
-      <td>{value}</td>
+      <th className="text-sm font-body font-normal">{title}</th>
+      <td className="text-sm font-body font-light">: {value}</td>
     </tr>
   );
 };
