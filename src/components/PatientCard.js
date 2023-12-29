@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { PlusIcon } from "./svgs";
 import { AnimatePresence, motion } from "framer-motion";
 
-export const PatientCard = ({ data }) => {
+export const PatientCard = ({ data, number }) => {
   const { name } = data;
 
   const [openDetails, setOpenDetails] = useState(false);
@@ -18,7 +18,7 @@ export const PatientCard = ({ data }) => {
         className="bg-primary p-4 text-sm text-secondary text-left flex place-content-between items-center"
         onClick={toggleOpenDetails}
       >
-        <span>{name}</span>
+        <span>{`${number}. ${name}`}</span>
         <PlusIcon
           className={`w-5 shrink-0 transition-transform ${
             openDetails ? "rotate-45" : "rotate-0"
@@ -68,8 +68,9 @@ const DetailsContainer = ({ data }) => {
         height: 0,
       }}
     >
-      <div className="border-2 border-primary p-4">
-        <table>
+      <div className="border-2 border-primary p-4 flex">
+        <div className="side-bar-menu w-16 shrink-0 bg-tertiary"></div>
+        <table className=" ml-4 flex-1">
           <tbody>
             <TableData title="Actual Weight" value={actualWeight} />
             <TableData title="Arm Circumference" value={armCircumference} />
@@ -105,9 +106,10 @@ const DetailsContainer = ({ data }) => {
 
 const TableData = ({ title, value }) => {
   return (
-    <tr>
-      <th className="text-sm font-body font-normal">{title}</th>
-      <td className="text-sm font-body font-light">: {value}</td>
+    <tr className="even:bg-tertiary">
+      <th className="text-sm font-body font-normal align-text-top">{title}</th>
+      <td className="text-sm font-body font-light align-text-top">:&nbsp;</td>
+      <td className="text-sm font-body font-light"> {value}</td>
     </tr>
   );
 };

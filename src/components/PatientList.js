@@ -30,7 +30,7 @@ export const PatientList = ({ patients, take }) => {
     <>
       <ul className="list-none p-0 col-start-1 col-end-13 mt-6">
         {patientToDisplay.map((patient, index) => {
-          return <PatientCard key={index} data={patient} />;
+          return <PatientCard key={index} data={patient} number={index + 1} />;
         })}
       </ul>
       {loading && (
@@ -39,7 +39,7 @@ export const PatientList = ({ patients, take }) => {
       <button
         onClick={handleLoadMore}
         className="col-start-1 col-end-13 mt-12 bg-primary text-secondary p-4 text-sm rounded-md disabled:bg-accent"
-        disabled={disableButton}
+        disabled={disableButton || loading}
       >
         Load More
       </button>
