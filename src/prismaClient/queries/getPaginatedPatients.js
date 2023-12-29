@@ -1,3 +1,4 @@
+"use server";
 import { getPatients } from "./getPatients";
 
 export const getPaginatedPatients = async (

@@ -1,11 +1,11 @@
 import { ClientLogger } from "components/ClientLogger";
-import { PatientCard } from "components/PatientCard";
 import { ResponsiveGrid } from "components/theme";
 import Image from "next/image";
 import { getPaginatedPatients } from "prismaClient/queries/getPaginatedPatients";
 import { getPatients } from "prismaClient/queries/getPatients";
 import React from "react";
 import patientImage from "assets/patient.jpg";
+import { PatientList } from "components/PatientList";
 
 export default async function patientPage() {
   const patients = await getPaginatedPatients();
@@ -31,15 +31,5 @@ const Header = () => {
         className="absolute left-0 w-full z-[-1] brightness-50"
       />
     </header>
-  );
-};
-
-const PatientList = ({ patients }) => {
-  return (
-    <ul className="list-none p-0 col-start-1 col-end-13 mt-6">
-      {patients.map((patient, index) => {
-        return <PatientCard key={index} data={patient} />;
-      })}
-    </ul>
   );
 };
