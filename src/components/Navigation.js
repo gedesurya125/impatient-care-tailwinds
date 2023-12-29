@@ -9,7 +9,7 @@ export const Navigation = () => {
   const { links } = navigationData;
 
   return (
-    <nav className="bg-primary z-50 relative">
+    <nav className="bg-primary z-50 sticky top-0 left-0 w-full">
       <ResponsiveGrid className="py-6">
         <LogoLink />
         <MenuButton />

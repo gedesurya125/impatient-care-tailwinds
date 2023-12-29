@@ -8,13 +8,14 @@ import patientImage from "assets/patient.jpg";
 import { PatientList } from "components/PatientList";
 
 export default async function patientPage() {
-  const patients = await getPaginatedPatients();
+  const PATIENT_PER_PAGE = 10;
+  const patients = await getPaginatedPatients({ take: PATIENT_PER_PAGE });
 
   return (
-    <ResponsiveGrid id="patients-page">
+    <ResponsiveGrid id="patients-page" className="pb-14">
       <ClientLogger data={patients} />
       <Header />
-      <PatientList patients={patients} />
+      <PatientList patients={patients} take={PATIENT_PER_PAGE} />
     </ResponsiveGrid>
   );
 }
