@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { PlusIcon } from "./svgs";
+import { Pen, PlusIcon, Trash } from "./svgs";
 import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "./theme/utils";
+import { BUTTON_VARIANT } from "constants/buttonVariant";
 
 export const PatientCard = ({ data, number }) => {
   const { name } = data;
@@ -69,7 +71,7 @@ const DetailsContainer = ({ data }) => {
       }}
     >
       <div className="border-2 border-primary p-4 flex">
-        <div className="side-bar-menu w-16 shrink-0 bg-tertiary"></div>
+        <SideBarMenu></SideBarMenu>
         <table className=" ml-4 flex-1">
           <tbody>
             <TableData title="Actual Weight" value={actualWeight} />
@@ -115,3 +117,37 @@ const TableData = ({ title, value }) => {
 };
 
 const getFormattedDate = (isoString) => new Date(isoString).toDateString();
+
+function SideBarMenu() {
+  return (
+    <div className="side-bar-menu w-16 shrink-0 bg-tertiary p-2 rounded-md grid gap-4 auto-rows-min">
+      <SideBarButton>
+        <Pen />
+      </SideBarButton>
+      <SideBarButton variant={BUTTON_VARIANT.danger}>
+        <Trash />
+      </SideBarButton>
+    </div>
+  );
+}
+
+const SideBarButton = ({
+  children,
+  className,
+  variant = BUTTON_VARIANT.success,
+}) => {
+  const variants = {
+    [BUTTON_VARIANT.danger]: "[&>*]:text-red-700 border-red-700",
+    [BUTTON_VARIANT.success]: "[&>*]:text-primary border-primary",
+  };
+
+  return (
+    <button
+      className={cn(
+        `w-full p-3  border-2 rounded-md  border-primary ${variants[variant]} ${className}`
+      )}
+    >
+      {children}
+    </button>
+  );
+};
