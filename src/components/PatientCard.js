@@ -4,6 +4,7 @@ import { Pen, PlusIcon, Trash } from "./svgs";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "./theme/utils";
 import { BUTTON_VARIANT } from "constants/buttonVariant";
+import { getFormattedDate } from "utils/getFormattedDate";
 
 export const PatientCard = ({ data, number }) => {
   const { name } = data;
@@ -115,8 +116,6 @@ const TableData = ({ title, value }) => {
     </tr>
   );
 };
-
-const getFormattedDate = (isoString) => new Date(isoString).toDateString();
 
 function SideBarMenu() {
   return (
