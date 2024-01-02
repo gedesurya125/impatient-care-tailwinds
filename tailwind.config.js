@@ -20,8 +20,8 @@ module.exports = {
       xl: ["4rem", "1.15em"],
     },
     fontFamily: {
-      heading: ["var(--font-lora)"],
-      body: ["var(--font-inter)"],
+      heading: ["var(--font-lora-local)"],
+      body: ["var(--font-local-inter)"],
     },
     extend: {
       colors: {

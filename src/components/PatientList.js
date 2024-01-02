@@ -16,7 +16,6 @@ export const PatientList = ({ patients, take }) => {
       take,
     });
 
-    console.log("fetched patient", patients);
     if (patients) {
       setPatientToDisplay((state) => [...state, ...patients]);
       if (patients.length < take) {

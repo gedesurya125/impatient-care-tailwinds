@@ -35,6 +35,7 @@ export const MenuButton = () => {
 };
 
 const NavigationOverlay = ({ handleClose }) => {
+  // TODO: replace the Overlay Components with the AnimatedOverlay Component
   return (
     <Overlay
       id="nav-overlay"

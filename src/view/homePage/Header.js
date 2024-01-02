@@ -1,4 +1,3 @@
-import { ClientLogger } from "components/ClientLogger";
 import { ResponsiveGrid } from "components/theme";
 import { getPaginatedPatients } from "prismaClient/queries/getPaginatedPatients";
 import { getPatients } from "prismaClient/queries/getPatients";

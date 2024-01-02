@@ -1,8 +1,6 @@
-import { ClientLogger } from "components/ClientLogger";
 import { ResponsiveGrid } from "components/theme";
 import Image from "next/image";
 import { getPaginatedPatients } from "prismaClient/queries/getPaginatedPatients";
-import { getPatients } from "prismaClient/queries/getPatients";
 import React from "react";
 import patientImage from "assets/patient.jpg";
 import { PatientList } from "components/PatientList";
@@ -13,7 +11,6 @@ export default async function patientPage() {
 
   return (
     <ResponsiveGrid id="patients-page" className="pb-14">
-      <ClientLogger data={patients} />
       <Header />
       <PatientList patients={patients} take={PATIENT_PER_PAGE} />
     </ResponsiveGrid>
