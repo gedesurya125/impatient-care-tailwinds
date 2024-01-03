@@ -46,26 +46,21 @@ const InputWrapper = ({ label, children, htmlFor }) => {
   );
 };
 
-export const TextInput = ({ id, label, defaultValue = "", type = "text" }) => {
+export const TextInput = ({ id, label, type = "text", ...props }) => {
   return (
     <InputWrapper label={label} htmlFor={id}>
-      <InputField
-        id={id}
-        label={label}
-        defaultValue={defaultValue}
-        type={type}
-      ></InputField>
+      <InputField id={id} label={label} type={type} {...props}></InputField>
     </InputWrapper>
   );
 };
-function InputField({ id, type, label, defaultValue }) {
+function InputField({ id, type, label, ...props }) {
   return (
     <input
       type={type}
       className={`peer bg-transparent border-b-2 border-primary placeholder:text-transparent ${inputTextStyle}`}
       id={id}
       placeholder={label}
-      defaultValue={defaultValue}
+      {...props}
     />
   );
 }
