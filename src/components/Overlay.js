@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { createPortal } from "react-dom";
 import { cn } from "./theme/utils/cn";
@@ -17,6 +18,15 @@ export const Overlay = ({
 }) => {
   const MotionBackdrop = motion(BackdropComponent);
   const MotionContentWrapper = motion(Component);
+
+  React.useEffect(() => {
+    if (window) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
 
   return createPortal(
     <MotionBackdrop

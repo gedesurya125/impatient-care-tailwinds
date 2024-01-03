@@ -74,6 +74,11 @@ module.exports = {
         28: "28rem",
         30: "30rem",
       },
+      zIndex: {
+        navigationOverlay: 20,
+        navigationBar: 21,
+        editPatientOverlay: 22,
+      },
     },
   },
   // https://tailwindcss.com/docs/plugins

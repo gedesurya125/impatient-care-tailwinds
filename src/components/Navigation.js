@@ -4,12 +4,13 @@ import { ResponsiveGrid } from "./theme";
 import { Logo } from "./svgs/Logo";
 import { MenuButton } from "./MenuButton";
 import { cn } from "./theme/utils/cn";
+import { Z_INDEX } from "constants/zIndex";
 
 export const Navigation = () => {
   const { links } = navigationData;
 
   return (
-    <nav className="bg-primary z-50 sticky top-0 left-0 w-full">
+    <nav className={`bg-primary z-navigationBar sticky top-0 left-0 w-full`}>
       <ResponsiveGrid className="py-6">
         <LogoLink />
         <MenuButton />
