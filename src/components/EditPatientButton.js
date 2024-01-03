@@ -5,6 +5,7 @@ import { SideBarButton } from "./SideBarButton";
 import { AnimatedOverlay } from "./AnimatedOverlay";
 import { CheckBox, TextInput } from "./formFields";
 import { fieldName } from "data/fieldNameData";
+import { Formik, Form } from "formik";
 
 export function EditPatientButton({ patientData }) {
   const [openOverlay, setOpenOverlay] = useState(false);
@@ -109,28 +110,101 @@ const PatientForm = ({ initialPatientData, ...props }) => {
     weightMrs,
   } = fieldName;
 
+  const stringToKey = (string = "") => string.toLowerCase().replace(" ", "_");
+
+  const getInitialValues = () => {
+    let initialValues;
+
+    Object.keys(fieldName).map((key) => {
+      initialValues = {
+        ...initialValues,
+        [stringToKey(fieldName[key])]: initialPatientData[key],
+      };
+    });
+    return initialValues;
+  };
+
   return (
-    <form className="p-6">
-      <TextInput label={actualWeight} type="number" />
-      <TextInput label={armCircumference} type="number" />
-      <TextInput label={assessmentDate} type="date" />
-      <TextInput label={codeAg} />
-      {/* <TextInput label={createdAt} /> */}
-      <TextInput label={diet} />
-      <TextInput label={dob} type="date" />
-      <TextInput label={heightMrs} type="number" />
-      <TextInput label={id} />
-      <TextInput label={imt} type="number" />
-      <TextInput label={imtOrWaterLow} />
-      <CheckBox label={isSamplingComstock} id={isSamplingComstock} />
-      <TextInput label={medicalDiagnose} />
-      <TextInput label={mrsDate} type="date" />
-      <TextInput label={name} />
-      <TextInput label={rmNumber} type="number" />
-      <TextInput label={roomName} />
-      <TextInput label={roomNumber} type="number" />
-      <TextInput label={waterLow} type="number" />
-      <TextInput label={weightMrs} type="number" />
-    </form>
+    <Formik
+      initialValues={getInitialValues()}
+      onSubmit={(values) => {
+        console.log("this is the formik values", values);
+      }}
+    >
+      {(props) => {
+        console.log("this sis the value", props.values);
+
+        return (
+          <Form className="p-6">
+            <TextInput
+              label={actualWeight}
+              name={stringToKey(actualWeight)}
+              type="number"
+            />
+            <TextInput
+              label={armCircumference}
+              name={stringToKey(armCircumference)}
+              type="number"
+            />
+            <TextInput
+              label={assessmentDate}
+              name={stringToKey(assessmentDate)}
+              type="date"
+            />
+            <TextInput label={codeAg} name={stringToKey(codeAg)} />
+            {/* <TextInput label={createdAt} name={stringToKey(createdAt)} /> */}
+            <TextInput label={diet} name={stringToKey(diet)} />
+            <TextInput label={dob} name={stringToKey(dob)} type="date" />
+            <TextInput
+              label={heightMrs}
+              name={stringToKey(heightMrs)}
+              type="number"
+            />
+            <TextInput label={id} name={stringToKey(id)} />
+            <TextInput label={imt} name={stringToKey(imt)} type="number" />
+            <TextInput
+              label={imtOrWaterLow}
+              name={stringToKey(imtOrWaterLow)}
+            />
+            <CheckBox
+              label={isSamplingComstock}
+              name={stringToKey(isSamplingComstock)}
+              id={isSamplingComstock}
+            />
+            <TextInput
+              label={medicalDiagnose}
+              name={stringToKey(medicalDiagnose)}
+            />
+            <TextInput
+              label={mrsDate}
+              name={stringToKey(mrsDate)}
+              type="date"
+            />
+            <TextInput label={name} name={stringToKey(name)} />
+            <TextInput
+              label={rmNumber}
+              name={stringToKey(rmNumber)}
+              type="number"
+            />
+            <TextInput label={roomName} name={stringToKey(roomName)} />
+            <TextInput
+              label={roomNumber}
+              name={stringToKey(roomNumber)}
+              type="number"
+            />
+            <TextInput
+              label={waterLow}
+              name={stringToKey(waterLow)}
+              type="number"
+            />
+            <TextInput
+              label={weightMrs}
+              name={stringToKey(weightMrs)}
+              type="number"
+            />
+          </Form>
+        );
+      }}
+    </Formik>
   );
 };

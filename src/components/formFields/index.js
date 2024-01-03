@@ -1,5 +1,7 @@
+"use client";
 import { CheckMark } from "components/svgs";
 import { cn } from "components/theme/utils";
+import { useField } from "formik";
 import React from "react";
 
 const inputTextStyle =
@@ -46,20 +48,29 @@ const InputWrapper = ({ label, children, htmlFor }) => {
   );
 };
 
-export const TextInput = ({ id, label, type = "text", ...props }) => {
+export const TextInput = ({ id, label, type = "text", name, ...props }) => {
   return (
     <InputWrapper label={label} htmlFor={id}>
-      <InputField id={id} label={label} type={type} {...props}></InputField>
+      <InputField
+        id={id}
+        label={label}
+        type={type}
+        name={name}
+        {...props}
+      ></InputField>
     </InputWrapper>
   );
 };
-function InputField({ id, type, label, ...props }) {
+function InputField({ id, type, label, name, ...props }) {
+  const [field, meta, helper] = useField(name);
+
   return (
     <input
       type={type}
       className={`peer bg-transparent border-b-2 border-primary placeholder:text-transparent ${inputTextStyle}`}
       id={id}
       placeholder={label}
+      {...field}
       {...props}
     />
   );
