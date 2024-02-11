@@ -1,2 +1,2 @@
 export const getFormattedDate = (isoString) =>
-  new Date(isoString).toDateString();
+  new Date(isoString).toLocaleDateString("en-GB");

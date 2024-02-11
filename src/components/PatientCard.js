@@ -59,6 +59,7 @@ const DetailsContainer = ({ data }) => {
     waterLow,
     weightMrs,
   } = data;
+
   return (
     <motion.div
       initial={{

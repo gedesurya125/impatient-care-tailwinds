@@ -6,6 +6,7 @@ import { AnimatedOverlay } from "./AnimatedOverlay";
 import { CheckBox, TextInput } from "./formFields";
 import { fieldName } from "data/fieldNameData";
 import { Formik, Form } from "formik";
+import { getFormattedDate } from "utils/getFormattedDate";
 
 export function EditPatientButton({ patientData }) {
   const [openOverlay, setOpenOverlay] = useState(false);
@@ -84,8 +85,6 @@ const Header = ({ handleClose }) => {
 };
 
 const PatientForm = ({ initialPatientData, ...props }) => {
-  console.log("this is the patientd data", initialPatientData);
-
   const {
     actualWeight,
     armCircumference,
@@ -115,6 +114,8 @@ const PatientForm = ({ initialPatientData, ...props }) => {
   const getInitialValues = () => {
     let initialValues;
 
+    // todo: handle the date type
+
     Object.keys(fieldName).map((key) => {
       initialValues = {
         ...initialValues,
@@ -125,15 +126,8 @@ const PatientForm = ({ initialPatientData, ...props }) => {
   };
 
   return (
-    <Formik
-      initialValues={getInitialValues()}
-      onSubmit={(values) => {
-        console.log("this is the formik values", values);
-      }}
-    >
+    <Formik initialValues={getInitialValues()} onSubmit={(values) => {}}>
       {(props) => {
-        console.log("this sis the value", props.values);
-
         return (
           <Form className="p-6">
             <TextInput
